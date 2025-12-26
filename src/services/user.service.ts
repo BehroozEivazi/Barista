@@ -1,6 +1,6 @@
 import { randomUUID } from "crypto";
 import { UserRepository } from "../repositories/user.repository";
-import { IUser } from "../models/user.model";
+import { IUser, IUserCreate } from "../models/user.model";
 
 export class UserService {
   constructor(private userRepo: UserRepository) {}
@@ -27,8 +27,7 @@ export class UserService {
       throw new Error("Email already exists");
     }
 
-    const user: IUser = {
-      id: randomUUID(),
+    const user: IUserCreate = {
       name,
       email,
     };

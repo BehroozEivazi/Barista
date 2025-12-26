@@ -1,5 +1,5 @@
 import { pool } from "../config/database";
-import { IUser } from "../models/user.model";
+import { IUser, IUserCreate } from "../models/user.model";
 
 export class UserRepository {
   async findAll(): Promise<IUser[]> {
@@ -17,12 +17,13 @@ export class UserRepository {
     return rows[0] || null;
   }
 
-  async create(user: IUser): Promise<IUser> {
-    await pool.query(
-      `INSERT INTO users (id, name, email)
-       VALUES ($1, $2, $3)`,
-      [user.id, user.name, user.email]
+  async create(user: IUserCreate): Promise<IUser> {
+    const { rows } = await pool.query<IUser>(
+      `INSERT INTO users (name, email)
+       VALUES ($1, $2)
+       RETURNING id, name, email`,
+      [user.name, user.email]
     );
-    return user;
+    return rows[0];
   }
 }
