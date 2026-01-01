@@ -1,7 +1,7 @@
 import { IUser, IUserCreate } from "../models/entities/user.model";
 import { UserMapper } from "../models/mappers/user.mapper";
 import { IUserViewModel } from "../models/view-models/user.viewmodel";
-import { IUserRepository } from "../models/repositories/IUserRepository";
+import { IUserRepository } from "../models/repositories/user.repository";
 import { IUserService } from "../models/services/user.service";
 
 export class UserService implements IUserService {

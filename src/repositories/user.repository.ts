@@ -1,5 +1,5 @@
 import { pool } from "../config/database";
-import { IUserRepository } from "../models/repositories/IUserRepository";
+import { IUserRepository } from "../models/repositories/user.repository";
 import { IUser, IUserCreate } from "../models/entities/user.model";
 
 export class UserRepository implements IUserRepository {
