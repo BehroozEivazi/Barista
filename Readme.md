@@ -1,4 +1,3 @@
-```markdown
 # Simple Node.js Layered Project
 
 This is a **sample Node.js project** written in TypeScript to demonstrate a **layered architecture** inspired by the **Onion Architecture**.
@@ -10,6 +9,7 @@ This is a **sample Node.js project** written in TypeScript to demonstrate a **la
 ## 🏗️ Architecture
 
 The project follows a **layered architecture** with clear separation of concerns:
+
 ```
 
 src/
@@ -28,7 +28,7 @@ src/
 ├── container.ts # Composition root / dependency injection
 └── index.ts # Entry point
 
-````
+```
 
 ### Key Principles
 
@@ -54,7 +54,7 @@ src/
 
 ```bash
 npm install
-````
+```
 
 2. Configure database connection in `src/config/database.ts` (if using PostgreSQL)
 
