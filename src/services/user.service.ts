@@ -1,6 +1,7 @@
-import { randomUUID } from "crypto";
 import { UserRepository } from "../repositories/user.repository";
-import { IUser, IUserCreate } from "../models/user.model";
+import { IUser, IUserCreate } from "../models/entities/user.model";
+import { UserMapper } from "../models/mappers/user.mapper";
+import { IUserViewModel } from "../models/view-models/user.viewmodel";
 
 export class UserService {
   constructor(private userRepo: UserRepository) {}
@@ -9,12 +10,13 @@ export class UserService {
     return this.userRepo.findAll();
   }
 
-  async getUserById(id: string): Promise<IUser> {
+  async getUserById(id: string): Promise<IUserViewModel> {
     const user = await this.userRepo.findById(id);
     if (!user) {
       throw new Error("User not found");
     }
-    return user;
+    const mUser = UserMapper.toViewModel(user);
+    return mUser;
   }
 
   async createUser(name: string, email: string): Promise<IUser> {

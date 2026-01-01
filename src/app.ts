@@ -8,7 +8,7 @@ app.use(express.json());
 
 app.use("/api/users", userRoutes);
 
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+app.use((err: Error, req: Request, res: Response) => {
   res.status(400).json({
     message: err.message,
   });

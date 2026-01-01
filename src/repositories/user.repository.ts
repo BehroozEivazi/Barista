@@ -1,7 +1,14 @@
 import { pool } from "../config/database";
-import { IUser, IUserCreate } from "../models/user.model";
+import { IUserRepository } from "../models/repositories/IUserRepository";
+import { IUser, IUserCreate } from "../models/entities/user.model";
 
-export class UserRepository {
+export class UserRepository implements IUserRepository {
+  update(id: string, data: IUserCreate): Promise<IUser | null> {
+    throw new Error("Method not implemented.");
+  }
+  delete(id: string): Promise<boolean> {
+    throw new Error("Method not implemented.");
+  }
   async findAll(): Promise<IUser[]> {
     const { rows } = await pool.query<IUser>("SELECT id, name, email FROM users");
     return rows;
