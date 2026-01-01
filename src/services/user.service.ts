@@ -1,10 +1,11 @@
-import { UserRepository } from "../repositories/user.repository";
 import { IUser, IUserCreate } from "../models/entities/user.model";
 import { UserMapper } from "../models/mappers/user.mapper";
 import { IUserViewModel } from "../models/view-models/user.viewmodel";
+import { IUserRepository } from "../models/repositories/IUserRepository";
+import { IUserService } from "../models/services/user.service";
 
-export class UserService {
-  constructor(private userRepo: UserRepository) {}
+export class UserService implements IUserService {
+  constructor(private readonly userRepo: IUserRepository) {}
 
   async getUsers(): Promise<IUser[]> {
     return this.userRepo.findAll();

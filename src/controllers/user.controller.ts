@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from "express";
-import { UserService } from "../services/user.service";
+import { IUserService } from "../models/services/user.service";
 
 export class UserController {
-  constructor(private userService: UserService) {}
+  constructor(private readonly userService: IUserService) {}
 
   getUsers = async (req: Request, res: Response) => {
     const users = await this.userService.getUsers();
