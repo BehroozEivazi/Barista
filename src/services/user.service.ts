@@ -3,6 +3,7 @@ import { UserMapper } from "../models/mappers/user.mapper";
 import { IUserViewModel } from "../models/view-models/user.viewmodel";
 import { IUserRepository } from "../models/repositories/user.repository";
 import { IUserService } from "../models/services/user.service";
+import { socketIO } from "../server";
 
 export class UserService implements IUserService {
   constructor(private readonly userRepo: IUserRepository) {}
